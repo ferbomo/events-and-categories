@@ -41,9 +41,9 @@ Por ejemplo, el evento `Real Madrid - Barcelona` pertenece a la categoría `Liga
 ## Observaciones:
 
 * Usa el lenguaje en el que te sientas más cómodo.
-* **No uses frameworks ni librerías externas (no uses Grails, Rails, Django ni similares. No uses ninguna bbdd). Queremos ver tu código, no el de los frameworks xD.**
-* Valoramos mucho las buenas prácticas de diseño, por lo que ten en cuenta factores como la modularización, extensibilidad, mantenimiento, etc.
+* **No uses frameworks ni librerías externas (no uses Grails, Rails, Django ni similares. No uses ninguna bbdd). Queremos ver tu código, no el de los frameworks.**
+* Valoramos mucho las buenas prácticas del código y de diseño, por lo que ten en cuenta factores como seguir las convenciones del lenguaje, conocimiento del lenguaje, la legibilidad del código, modularización, extensibilidad, facilidad de mantenimiento, gestión de errores, etc.
 * Comenta tu código cuando lo consideres necesario.
 * Implementa las estructuras de datos y algoritmos más eficientes que se te ocurran.
-* Haznos saber cómo debemos ejecutar tu código.
+* Haznos saber cómo debemos compilar y ejecutar el código del programa (y los teses unitarios si los hubiera). Si quieres, utiliza alguna herramienta que facilite la ejecución con independencia del entorno de desarrollo.
 * Extra ball: testing es más que bienvenido si te queda tiempo.
