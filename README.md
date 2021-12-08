@@ -47,3 +47,94 @@ Por ejemplo, el evento `Real Madrid - Barcelona` pertenece a la categoría `Liga
 * Implementa las estructuras de datos y algoritmos más eficientes que se te ocurran.
 * Haznos saber cómo debemos compilar y ejecutar el código del programa (y los teses unitarios si los hubiera). Si quieres, utiliza alguna herramienta que facilite la ejecución con independencia del entorno de desarrollo.
 * Extra ball: testing es más que bienvenido si te queda tiempo.
+
+## Estrategia:
+
+Para realizar esta prueba he usado un MacBook Pro con MacOS 12.0.1 Monterey. 
+Como lenguaje he usado Java 11, junto con Maven 3.8.2 como gestor de dependencias.
+
+Para los tests he tenido que añadir JUnit, ya que no se me ocurria como integrar tests automáticos en fase de 
+construcción, o para ver la cobertura de los mismos. Me ha sido más útil dada la naturaleza de la prueba.
+
+Como he creido que la estructura de datos era muy parecida a un árbol general, he implementado las clases usando el 
+patrón composite, usando la interfaz Sport que cumplen todos, la clase Event como Hoja del árbol y la clase Category 
+como nodo intermedio. Me ha sido útil a la hora de pintar el directorio completo y los breadcrumbs de los eventos.
+
+Para el almacenamiento he creado un servicio, SportsStorage, que almacena y recupera los objetos Sport de un Mapa. 
+He elegido un mapa porque la recuperación es muy rápida.
+
+## Ejecución
+Para ejecutar hay que tener instalado Docker. https://docs.docker.com/desktop/mac/install/
+Una vez instalado, en la raíz del proyecto, ejecutar: ./runDocker.sh
+
+## Prueba
+Lo primero sería seleccionar la opcion 1, por lo que escribiriamos 1 y pulsamos Enter.
+Ésto cargará datos en el mapa que usamos como almacenamiento.
+
+Escribiendo 2 y pulsando Enter nos mostrará el directorio completo.
+```
+[1] Deportes
+├── [2] Fútbol
+│   └── [3] Liga BBVA
+│       ├── [4] Real Madrid - Barcelona
+│       └── [5] Real Madrid - Villarreal
+└── [6] Baloncesto
+    └── [7] Euroliga
+        └── [8] Final Four
+
+[9] DeleteMe
+
+```
+
+Para la opción 3, escribimos 3 y Enter. Nos pedirá los Eventos separados por coma. Y nos devolvera los respectivos 
+ids separados por comas.
+```
+Please introduce the events separated by comma:
+Real Madrid - Barcelona,Real Madrid - Villarreal,Final Four
+4,5,8
+
+```
+
+Para la opción 4, escribimos 4 y Enter. Nos pedirá que escribamos los ids separados por coma.
+Y nos devolvera lo siguiente:
+```
+Please introduce the events ids separated by comma:
+4,5,8
+[4] Real Madrid - Barcelona: Deportes -> Fútbol -> Liga BBVA 
+[5] Real Madrid - Villareal: Deportes -> Fútbol -> Liga BBVA 
+[8] Final Four: Deportes -> Baloncesto -> Euroliga 
+
+```
+Para la opción 5, escribimos 5 y Enter. Nos pedirá el nombre de la categoría que queremos recuperar su id. He 
+preparado una categoría sin hijos, en la carga inicial para probar el borrado.
+```
+Please introduce the category name:
+DeleteMe
+9
+```
+Para la opción 6, escribimos 6 y Enter. Nos pedirá el id de la categoría que queremos borrar.
+```
+Please introduce the category id:
+9
+Category deleted.
+
+Si volvemos a ejecutar la opción 2, vemos que ha borrado la categoria 9
+
+[1] Deportes
+├── [2] Fútbol
+│   └── [3] Liga BBVA
+│       ├── [4] Real Madrid - Barcelona
+│       └── [5] Real Madrid - Villareal
+└── [6] Baloncesto
+    └── [7] Euroliga
+        └── [8] Final Four
+
+```
+Si intentamos borrar una categoría con hijos no nos dejará:
+```
+Please introduce the category id:
+7
+You can't remove a category with child categories or associated events.
+```
+
+Con la opción 7 mas Enter salimos de la aplicación.
