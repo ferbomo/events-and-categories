@@ -1,6 +1,6 @@
-# Categorías y eventos en StubHub
+# Categorías y eventos
 
-En StubHub sus eventos están categorizados, de forma que un evento pertenece a una **única** categoría. De la misma forma, las categorías pueden pertenecer a **una o ninguna** categoría.
+En la empresa, sus eventos están categorizados, de forma que un evento pertenece a una **única** categoría. De la misma forma, las categorías pueden pertenecer a **una o ninguna** categoría.
 
 Por ejemplo, el evento `Real Madrid - Barcelona` pertenece a la categoría `Liga BBVA`, que a su vez pertenece a la categoría `fútbol`, y esta por último a la categoría `deportes`.
 
