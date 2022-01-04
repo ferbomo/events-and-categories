@@ -31,7 +31,7 @@ public class Event implements Sport {
 
     @Override
     public void addChild(Sport sport) {
-        //Events doesn't have childs
+        throw new RuntimeException("Events don't have children");
     }
 
     @Override
